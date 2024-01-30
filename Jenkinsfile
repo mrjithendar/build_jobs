@@ -7,38 +7,29 @@ pipeline {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
-                  frontend_service: {
-                    build 'boutique_project/frontend_service'
+                  cart: {
+                    build 'microservices/cart_service'
                   },
-                  email_service: {
-                    build 'boutique_project/email_service'
+                  catalogue: {
+                    build 'microservices/catalogue_service'
                   },
-                  ad_service: {
-                    build 'boutique_project/ad_service'
+                  frontend: {
+                    build 'microservices/frontend_service'
                   },
-                  cart_service: {
-                    build 'boutique_project/cart_service'
+                  mongodb: {
+                    build 'microservices/mongodb_service'
                   },
-                  checkout_service: {
-                    build 'boutique_project/checkout_service'
+                  payment: {
+                    build 'microservices/payment_service'
                   },
-                  currency_service: {
-                    build 'boutique_project/currency_service'
+                  rabbitmq: {
+                    build 'microservices/rabbitmq_service'
                   },
-                  load_generator: {
-                    build 'boutique_project/load_generator'
+                  shipping: {
+                    build 'microservices/shipping_service'
                   },
-                  payment_service: {
-                    build 'boutique_project/payment_service'
-                  },
-                  catalog_service: {
-                    build 'boutique_project/product_catalog_service'
-                  },
-                  recommendation_service: {
-                    build 'boutique_project/recommendation_service'
-                  },
-                  shipping_service: {
-                    build 'boutique_project/shipping_service'
+                  user: {
+                    build 'microservices/user_service'
                   }
                 )
             }
