@@ -16,9 +16,6 @@ pipeline {
                   frontend: {
                     build 'microservices/frontend_service'
                   },
-                  mongodb: {
-                    build 'microservices/mongodb_service'
-                  },
                   payment: {
                     build 'microservices/payment_service'
                   },
