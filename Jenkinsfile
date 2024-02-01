@@ -27,6 +27,9 @@ pipeline {
                   },
                   user: {
                     build 'microservices/user_service'
+                  },
+                  user: {
+                    build 'microservices/mongodb_service'
                   }
                 )
             }
