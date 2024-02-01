@@ -10,14 +10,14 @@ pipeline {
                   mongodb: {
                     build 'microservices/mongodb_service'
                   },
+                  shipping: {
+                    build 'microservices/shipping_service'
+                  },
                   cart: {
                     build 'microservices/cart_service'
                   },
                   catalogue: {
                     build 'microservices/catalogue_service'
-                  },
-                  frontend: {
-                    build 'microservices/frontend_service'
                   },
                   payment: {
                     build 'microservices/payment_service'
@@ -25,12 +25,12 @@ pipeline {
                   rabbitmq: {
                     build 'microservices/rabbitmq_service'
                   },
-                  shipping: {
-                    build 'microservices/shipping_service'
-                  },
                   user: {
                     build 'microservices/user_service'
-                  }
+                  },
+                  frontend: {
+                    build 'microservices/frontend_service'
+                  },
                 )
             }
         }
