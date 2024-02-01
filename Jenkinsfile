@@ -7,6 +7,9 @@ pipeline {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
+                  mongodb: {
+                    build 'microservices/mongodb_service'
+                  },
                   cart: {
                     build 'microservices/cart_service'
                   },
@@ -27,9 +30,6 @@ pipeline {
                   },
                   user: {
                     build 'microservices/user_service'
-                  },
-                  mongodb: {
-                    build 'microservices/mongodb_service'
                   }
                 )
             }
