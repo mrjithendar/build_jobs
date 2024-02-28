@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status. This ensures that the script stops executing if any command fails.
+# Treat unset variables as an error when expanding them. This means if you try to use a variable that hasn't been set, it will throw an error.
+set -eu
+# Setting pipefail ensures that a pipeline returns a non-zero status if any command within it fails.
+# Rather than returning the exit status of the last command in the pipeline. 
+# This is particularly useful for error handling in shell scripts. 
+set -o pipefail
+
 clusterName=$(aws eks list-clusters | grep roboshop | xargs)
 
 echo "update cluster config"
@@ -19,7 +27,5 @@ if [ $nameSpace != 'roboshop' ]; then
     kubectl create namespace roboshop
     echo "Roboshop namesapce created"
 else 
-    echo "Roboshop namesapce found"
+    echo "Roboshop namesapce found, pipeline will be continued."
 fi
-
-exit 0
