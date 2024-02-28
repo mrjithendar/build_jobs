@@ -7,8 +7,7 @@ ingressClass=$(kubectl get ingressclass | grep alb | awk '{print $1}')
 
 if [ $ingressClass == 'albc' ]; then
     echo "AWS LBC Installed"
-    continue 
 else 
     echo "AWS LBC not Installed"
-    break
+    exit 1
 fi
