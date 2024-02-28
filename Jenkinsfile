@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Check EKS Dependencies') {
             steps {
-                sh ""
+                sh "sh dependecyCheck.sh"
             }
         }
         stage('Deploy Roboshop Dependencies') {
