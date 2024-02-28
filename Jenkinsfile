@@ -16,13 +16,13 @@ pipeline {
                   mysql: {
                     build 'microservices/mysql_service'
                   },
-                  mysql: {
+                  redis: {
                     build 'microservices/redis_service'
                   },
                 )
             }
         }
-        stage('Build and Deploy Microservice') {
+        stage('Build and Deploy Roboshop Microservice') {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
