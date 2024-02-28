@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Deploy Roboshop WebApp') {
+        stage('Check EKS Dependencies') {
             steps {
                 sh "aws eks update-kubeconfig --name roboshop-eks-cluster-demo --region us-east-1"
                 sh "ingressClass=$(kubectl get ingressclass | grep alb | awk '{print $1}')"
