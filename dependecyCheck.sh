@@ -21,3 +21,5 @@ if [ $ingressClass != 'roboshop' ]; then
 else 
     echo "Roboshop namesapce found"
 fi
+
+exit 0
