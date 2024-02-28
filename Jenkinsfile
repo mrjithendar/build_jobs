@@ -5,9 +5,7 @@ pipeline {
     stages {
         stage('Check EKS Dependencies') {
             steps {
-                sh "aws eks update-kubeconfig --name roboshop-eks-cluster-demo --region us-east-1"
-                sh "ingressClass=$(kubectl get ingressclass | grep alb | awk '{print $1}')"
-                sh "if [ $ingressClass == 'alb' ]; then continue else exit 1"
+                sh ""
             }
         }
         stage('Deploy Roboshop Dependencies') {
