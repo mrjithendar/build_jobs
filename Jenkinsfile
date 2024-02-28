@@ -3,13 +3,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Microservice for Boutique App') {
+        stage('Deploy Roboshop Dependencies') {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
                   mongodb: {
                     build 'microservices/mongodb_service'
                   },
+                  rabbitmq: {
+                    build 'microservices/rabbitmq_service'
+                  },
+                  mysql: {
+                    build 'microservices/mysql_service'
+                  },
+                  mysql: {
+                    build 'microservices/redis_service'
+                  },
+                )
+            }
+        }
+        stage('Build and Deploy Microservice') {
+            steps {
+                // parallel steps and stages executes multiples steps or stages at a time
+                parallel(
                   shipping: {
                     build 'microservices/shipping_service'
                   },
@@ -21,9 +37,6 @@ pipeline {
                   },
                   payment: {
                     build 'microservices/payment_service'
-                  },
-                  rabbitmq: {
-                    build 'microservices/rabbitmq_service'
                   },
                   user: {
                     build 'microservices/user_service'
