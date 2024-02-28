@@ -15,9 +15,9 @@ else
     exit 1
 fi
 
-if [ $ingressClass == 'roboshop' ]; then
-    echo "Roboshop namesapce found"
-else 
+if [ $ingressClass != 'roboshop' ]; then
     kubectl create namespace roboshop
     echo "Roboshop namesapce created"
+else 
+    echo "Roboshop namesapce found"
 fi
