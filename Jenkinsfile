@@ -3,6 +3,13 @@ pipeline {
     agent any
 
     stages {
+        stage('Deploy Roboshop WebApp') {
+            steps {
+                sh "aws eks update-kubeconfig --name roboshop-eks-cluster-demo --region us-east-1"
+                sh "ingressClass=$(kubectl get ingressclass | grep alb | awk '{print $1}')"
+                sh "if [ $ingressClass == 'alb' ]; then continue else exit 1"
+            }
+        }
         stage('Deploy Roboshop Dependencies') {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
@@ -22,7 +29,7 @@ pipeline {
                 )
             }
         }
-        stage('Build and Deploy Roboshop Microservice') {
+        stage('Deploy Roboshop Microservice') {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
@@ -44,7 +51,7 @@ pipeline {
                 )
             }
         }
-        stage('Build and Deploy Roboshop WebApp') {
+        stage('Deploy Roboshop WebApp') {
             steps {
                 // parallel steps and stages executes multiples steps or stages at a time
                 parallel(
