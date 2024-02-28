@@ -30,4 +30,4 @@ else
     echo "Roboshop namesapce found, pipeline will be continued."
 fi
 
-exit 1
+exit
