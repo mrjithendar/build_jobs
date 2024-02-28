@@ -5,7 +5,9 @@ pipeline {
     stages {
         stage('Check EKS Dependencies') {
             steps {
-                sh "sh dependecyCheck.sh"
+                withAWS(credentials: 'awsCreds', region: 'us-east-1') {
+                    sh "sh dependecyCheck.sh"
+                }
             }
         }
         stage('Deploy Roboshop Dependencies') {
