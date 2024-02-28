@@ -41,6 +41,13 @@ pipeline {
                   user: {
                     build 'microservices/user_service'
                   },
+                )
+            }
+        }
+        stage('Build and Deploy Roboshop WebApp') {
+            steps {
+                // parallel steps and stages executes multiples steps or stages at a time
+                parallel(
                   frontend: {
                     build 'microservices/frontend_service'
                   },
