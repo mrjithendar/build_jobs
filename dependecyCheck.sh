@@ -10,3 +10,4 @@ if [ $ingressClass == 'alb' ]; then
     continue 
 else 
     exit 1
+fi
